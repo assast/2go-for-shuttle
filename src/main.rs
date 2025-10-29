@@ -17,7 +17,7 @@ async fn hello_world() -> &'static str {
 
 async fn read_sub() -> impl IntoResponse {
     let file_path = env::var("FILE_PATH").unwrap_or_else(|_| "./tmp".to_string());
-    let sub_path = env::var("SUB_PATH").unwrap_or_else(|_| "sub".to_string()); 
+    let sub_path = "sub".to_string(); // assast订阅链接打不开的问题修复
     match read_to_string(format!("{}/{}.txt", file_path, sub_path)) { 
         Ok(content) => content,
         Err(_) => "Failed to read sub.txt".to_string(),
