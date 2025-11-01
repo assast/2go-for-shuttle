@@ -4,8 +4,10 @@ on:
   push:
     branches: [ main ]
   workflow_dispatch:
-  schedule:
-    - cron: '0 0 1,30 * *'  # 每30天运行一次(UTC时间0点)
+#  schedule:
+#    - cron: '0 0 1,30 * *'  # 每30天运行一次(UTC时间0点)
+  repository_dispatch:
+    types: [service-down-alert]
 
 jobs:
   deploy:
